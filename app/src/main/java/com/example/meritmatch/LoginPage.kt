@@ -25,7 +25,6 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
 fun LoginPage(authViewModel: AuthViewModel = viewModel(), onAuthSuccess: (String, String) -> Unit) {
-    // Collect state flows inside composable functions
     val token by authViewModel.token.collectAsState()
     val signupResult by authViewModel.signupResult.collectAsState()
     val loginResult by authViewModel.loginResult.collectAsState()
@@ -88,7 +87,7 @@ fun LoginPage(authViewModel: AuthViewModel = viewModel(), onAuthSuccess: (String
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily.Serif,
-                color = Color.White
+                color = Color.Black
             )
             Spacer(modifier = Modifier.height(32.dp))
 

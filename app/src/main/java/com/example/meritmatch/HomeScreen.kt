@@ -107,7 +107,7 @@ fun TopBar(username: String, points: Int, onLogout: () -> Unit) {
                 Icon(
                     imageVector = Icons.Filled.ExitToApp,
                     contentDescription = "Logout",
-                    tint = Color.White // Set the desired color here
+                    tint = Color.White
                 )
             }
         },
