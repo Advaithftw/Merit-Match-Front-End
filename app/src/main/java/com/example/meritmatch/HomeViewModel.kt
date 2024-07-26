@@ -47,12 +47,10 @@ class HomeViewModel(private val token: String, private val username: String) : V
                 if (response.isSuccessful) {
                     _myTasks.value = response.body() ?: emptyList()
                 } else {
-                    // Handle error response if needed
                     Log.e("fetchMyTasks", "Error: ${response.errorBody()?.string()}")
                     _myTasks.value = emptyList()
                 }
             } catch (e: Exception) {
-                // Handle exception
                 Log.e("fetchMyTasks", "Exception: ${e.message}")
                 _myTasks.value = emptyList()
             }
@@ -67,8 +65,6 @@ class HomeViewModel(private val token: String, private val username: String) : V
                     val userPointsResponse = response.body()
                     _points.value = userPointsResponse?.karmaPoints ?: 0
                 } else {
-                    // Handle error response if needed
-                    // For example, log the error or show a message
                     _points.value = 0
                     Log.e("fetchPoints", "Error: ${response.errorBody()?.string()}")
                 }
@@ -97,9 +93,9 @@ class HomeViewModel(private val token: String, private val username: String) : V
         viewModelScope.launch {
             val response = apiService.reserveTask("Bearer $token", taskId)
             if (response.isSuccessful) {
-                fetchTasks() // Refresh task list after reserving a task
-                fetchMyTasks() // Refresh my tasks list after reserving a task
-                fetchPoints() // Refresh points after reserving a task
+                fetchTasks()
+                fetchMyTasks()
+                fetchPoints()
             }
             val updatedTasks = _tasks.value.map { task ->
                 if (task.id == taskId) {

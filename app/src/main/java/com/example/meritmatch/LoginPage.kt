@@ -35,7 +35,7 @@ fun LoginPage(authViewModel: AuthViewModel = viewModel(), onAuthSuccess: (String
     val useDarkIcons = !isSystemInDarkTheme()
     val context = LocalContext.current
 
-    // Update status bar color
+
     LaunchedEffect(Unit) {
         systemUiController.setSystemBarsColor(
             color = Color.Black,
@@ -43,14 +43,14 @@ fun LoginPage(authViewModel: AuthViewModel = viewModel(), onAuthSuccess: (String
         )
     }
 
-    // Handle token change
+
     LaunchedEffect(token) {
         token?.let {
             onAuthSuccess(it, username)
         }
     }
 
-    // Show toast for signup results
+
     LaunchedEffect(signupResult) {
         signupResult?.let {
             val message = if (it == "Signup successful") "Signup successful. You have been awarded 100 points!" else "Signup failed: $it"
@@ -58,7 +58,7 @@ fun LoginPage(authViewModel: AuthViewModel = viewModel(), onAuthSuccess: (String
         }
     }
 
-    // Show toast for login results
+
     LaunchedEffect(loginResult) {
         loginResult?.let {
             val message = if (it == "Login successful") "Welcome back, $username!" else "Login failed: $it"
